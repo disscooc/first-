@@ -1,0 +1,242 @@
+[
+  {
+    "path": ".github/workflows/build_macos.yml",
+    "size": 3925
+  },
+  {
+    "path": ".gitignore",
+    "size": 395
+  },
+  {
+    "path": "__init__.py",
+    "size": 2
+  },
+  {
+    "path": "build_mac.sh",
+    "size": 1068
+  },
+  {
+    "path": "build_win.bat",
+    "size": 54
+  },
+  {
+    "path": "build_windows.bat",
+    "size": 1916
+  },
+  {
+    "path": "build_windows_debug.bat",
+    "size": 8667
+  },
+  {
+    "path": "config.py",
+    "size": 6399
+  },
+  {
+    "path": "data/__init__.py",
+    "size": 0
+  },
+  {
+    "path": "data/public/contract_customers.json",
+    "size": 40856
+  },
+  {
+    "path": "data/public/party_a_library.json",
+    "size": 10990
+  },
+  {
+    "path": "data/public/party_b_library.json",
+    "size": 1229
+  },
+  {
+    "path": "data/public/seller_contacts.json",
+    "size": 535
+  },
+  {
+    "path": "data/public/templates/__init__.py",
+    "size": 2
+  },
+  {
+    "path": "data/public/templates/三方报价单模板-云达.docx",
+    "size": 13493
+  },
+  {
+    "path": "data/public/templates/三方报价单模板-标准.docx",
+    "size": 14455
+  },
+  {
+    "path": "data/public/templates/机时服务报价单模板-单价.xlsx",
+    "size": 10905
+  },
+  {
+    "path": "data/public/templates/机时服务报价单模板-数量.xlsx",
+    "size": 11079
+  },
+  {
+    "path": "data/public/templates/计算资源服务合同（按单价）-20250115 (9).docx",
+    "size": 28689
+  },
+  {
+    "path": "data/public/unit_aliases.json",
+    "size": 569
+  },
+  {
+    "path": "data/public/university_contracts.json",
+    "size": 61976
+  },
+  {
+    "path": "data/public/曙光计算服务资源服务目录及价格表（List Price）-20260501 (1).xlsx",
+    "size": 41337
+  },
+  {
+    "path": "engines/__init__.py",
+    "size": 2
+  },
+  {
+    "path": "engines/competitor.py",
+    "size": 1001
+  },
+  {
+    "path": "engines/contract_scanner.py",
+    "size": 33245
+  },
+  {
+    "path": "engines/contract_writer.py",
+    "size": 37277
+  },
+  {
+    "path": "engines/excel_writer.py",
+    "size": 16832
+  },
+  {
+    "path": "engines/library_manager.py",
+    "size": 14022
+  },
+  {
+    "path": "engines/pdf_exporter.py",
+    "size": 2463
+  },
+  {
+    "path": "engines/price_loader.py",
+    "size": 12926
+  },
+  {
+    "path": "engines/word_writer.py",
+    "size": 27227
+  },
+  {
+    "path": "engines/word_writer_new_funcs.py",
+    "size": 3701
+  },
+  {
+    "path": "gui/__init__.py",
+    "size": 2
+  },
+  {
+    "path": "gui/app.py",
+    "size": 84604
+  },
+  {
+    "path": "gui/autocomplete.py",
+    "size": 8976
+  },
+  {
+    "path": "gui/dialogs/__init__.py",
+    "size": 2
+  },
+  {
+    "path": "gui/dialogs/contract_dialog.py",
+    "size": 24222
+  },
+  {
+    "path": "gui/dialogs/contract_scan_dialog.py",
+    "size": 10711
+  },
+  {
+    "path": "gui/dialogs/library_editor.py",
+    "size": 11791
+  },
+  {
+    "path": "gui/dialogs/party_editor.py",
+    "size": 4952
+  },
+  {
+    "path": "gui/panels/__init__.py",
+    "size": 2
+  },
+  {
+    "path": "gui/panels/header_panel.py",
+    "size": 4758
+  },
+  {
+    "path": "gui/panels/quote_panel.py",
+    "size": 9183
+  },
+  {
+    "path": "gui/panels/resource_panel.py",
+    "size": 3365
+  },
+  {
+    "path": "gui/panels/thirdparty_panel.py",
+    "size": 3170
+  },
+  {
+    "path": "main.py",
+    "size": 170
+  },
+  {
+    "path": "models.py",
+    "size": 518
+  },
+  {
+    "path": "README.md",
+    "size": 3522
+  },
+  {
+    "path": "requirements.txt",
+    "size": 44
+  },
+  {
+    "path": "templates/__init__.py",
+    "size": 2
+  },
+  {
+    "path": "templates/三方报价单模板-云达.docx",
+    "size": 13493
+  },
+  {
+    "path": "templates/三方报价单模板-标准.docx",
+    "size": 14455
+  },
+  {
+    "path": "templates/机时服务报价单模板-单价.xlsx",
+    "size": 10905
+  },
+  {
+    "path": "templates/机时服务报价单模板-数量.xlsx",
+    "size": 11079
+  },
+  {
+    "path": "templates/计算资源服务合同（按单价）-20250115 (9).docx",
+    "size": 28689
+  },
+  {
+    "path": "tools/prepare_public_data.py",
+    "size": 5225
+  },
+  {
+    "path": "tools/refresh_contract_libraries.py",
+    "size": 20415
+  },
+  {
+    "path": "utils.py",
+    "size": 13910
+  },
+  {
+    "path": "启动报价工具.bat",
+    "size": 293
+  },
+  {
+    "path": "报价合同生成工具.spec",
+    "size": 904
+  }
+]

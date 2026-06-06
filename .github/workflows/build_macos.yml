@@ -1,0 +1,128 @@
+name: Build macOS App
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - "**"
+      - ".github/workflows/build_macos.yml"
+
+jobs:
+  build-macos:
+    name: Build macOS .app
+    runs-on: macos-14
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -r requirements.txt
+          python -m pip install pyinstaller
+
+      - name: Compile check
+        run: |
+          python -m compileall main.py config.py models.py utils.py engines gui tools
+
+      - name: Prepare sanitized public data
+        run: |
+          python tools/prepare_public_data.py --clean
+
+      - name: Verify private data is excluded from build payload
+        run: |
+          set -euo pipefail
+          forbidden_names=(
+            "contract_private_contacts.json"
+            "contract_private_customers.json"
+            "buyer_contacts.xlsx"
+            "customer_contacts.xlsx"
+            "contract_private_contacts.xlsx"
+            "contract_private_customers.xlsx"
+            "contract_private_contacts.csv"
+            "contract_private_customers.csv"
+          )
+
+          for name in "${forbidden_names[@]}"; do
+            if find build_share_payload -type f -name "$name" -print -quit | grep -q .; then
+              echo "Private data file found in build payload: $name"
+              exit 1
+            fi
+          done
+
+          if find build_share_payload -type d \( -name "private" -o -name "private_data" \) -print -quit | grep -q .; then
+            echo "Private data directory found in build payload."
+            exit 1
+          fi
+
+      - name: Build macOS app with PyInstaller
+        run: |
+          python -m PyInstaller \
+            --noconfirm \
+            --clean \
+            --windowed \
+            --onedir \
+            --name "报价合同生成工具" \
+            --add-data "build_share_payload/data:data" \
+            --exclude-module matplotlib \
+            --exclude-module scipy \
+            main.py
+
+      - name: Verify private data is excluded from app bundle
+        run: |
+          set -euo pipefail
+          forbidden_names=(
+            "contract_private_contacts.json"
+            "contract_private_customers.json"
+            "buyer_contacts.xlsx"
+            "customer_contacts.xlsx"
+            "contract_private_contacts.xlsx"
+            "contract_private_customers.xlsx"
+            "contract_private_contacts.csv"
+            "contract_private_customers.csv"
+          )
+
+          for name in "${forbidden_names[@]}"; do
+            if find dist -type f -name "$name" -print -quit | grep -q .; then
+              echo "Private data file found in app bundle: $name"
+              exit 1
+            fi
+          done
+
+          if find dist -type d \( -name "private" -o -name "private_data" \) -print -quit | grep -q .; then
+            echo "Private data directory found in app bundle."
+            exit 1
+          fi
+
+      - name: Ad-hoc sign macOS app
+        run: |
+          codesign --force --deep --sign - "dist/报价合同生成工具.app"
+
+      - name: Create distributable zip
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent \
+            "dist/报价合同生成工具.app" \
+            "dist/报价合同生成工具_macOS.app.zip"
+
+      - name: Upload macOS app artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: quote-contract-tool-macos
+          path: dist/报价合同生成工具_macOS.app.zip
+          if-no-files-found: error
+          retention-days: 14

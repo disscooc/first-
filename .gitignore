@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Build artifacts
+build/
+dist/
+build_share_payload/
+*.spec
+
+# Generated output and logs
+output/
+*.log
+quote.log
+plog.txt
+pyinstaller_log.txt
+build_log.txt
+
+# Private customer/contact data
+data/private/
+private_data/
+contract_private_contacts.json
+contract_private_customers.json
+buyer_contacts.xlsx
+customer_contacts.xlsx
